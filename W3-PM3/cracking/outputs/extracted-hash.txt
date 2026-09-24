@@ -1,0 +1,5 @@
+Hash Values for hash3.networkwalks_flag1.pdf
+Hash Algorithm	Value
+MD5			7fe04d052b19879aaa9fcac0b5dce138
+SHA-1			c4d3e309c01a15702ff98540fac12ea2c84ded3a
+SHA-256			f569ce5208a64b0f73f5a98f2187eafcd8282641fb27afa0c1a30d83b67ef06c
