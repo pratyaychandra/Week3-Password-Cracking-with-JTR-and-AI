@@ -54,7 +54,7 @@ This repository is Week 3 of an ongoing Cybersecurity & Ethical Hacking Program 
 
 ## ⚖️ Legal & Ethical Notice
 
-All activities in this repository were performed against files explicitly provided by NetworkWalks Academy for educational lab purposes, in a controlled, isolated environment (personal VMs/machines). No unauthorized systems, third-party data, or production infrastructure were accessed. Techniques demonstrated here (dictionary attacks, hash extraction, AI-orchestrated tool automation) are intended strictly for authorized security education and ethical hacking training.
+All activities in this repository were performed against files explicitly provided by NetworkWalks Academy for educational lab purposes, in a controlled, isolated environment (personal VMs/machines). No unauthorized systems, third-party data or production infrastructure were accessed. Techniques demonstrated here (dictionary attacks, hash extraction, AI-orchestrated tool automation) are intended strictly for authorized security education and ethical hacking training.
 
 ---
 
@@ -64,7 +64,7 @@ This week's objective was to recover passwords from encrypted PDF files using **
 
 1. **Manual CLI + GUI tooling** - John the Ripper driven through the Johnny GUI (PM1)
 2. **Simplified browser-based tooling** - NetworkWalks' own in-house web tools, zero installation (PM2)
-3. **AI-orchestrated automation** - Natural-language prompts to Claude Desktop, which autonomously drove John the Ripper via the HexStrike AI MCP server (PM3, Optional)
+3. **AI-orchestrated automation** - Natural-language prompts to Claude Desktop which autonomously drove John the Ripper via the HexStrike AI MCP server (PM3)
 
 This progression - *manual → simplified → AI-automated* - mirrors the real-world evolution of security tooling and was chosen deliberately to showcase range across the toolchain spectrum.
 
@@ -81,7 +81,7 @@ This progression - *manual → simplified → AI-automated* - mirrors the real-w
 | **NetworkWalks Password Cracker** | Password Cracking (Web) | Browser-based dictionary attack engine used in PM2 |
 | **Claude Desktop (Linux, unofficial build)** | AI Orchestration | Natural-language interface used to drive HexStrike MCP in PM3 |
 | **HexStrike AI MCP Server v6.0.0** | AI–Tool Bridge | Exposes 127 offensive security tools (including JTR) to Claude via Model Context Protocol |
-| **rockyou.txt** | Wordlist | Dictionary attack wordlist, pre-installed on Kali, used in PM3 |
+| **rockyou.txt** | Wordlist | Dictionary attack wordlist, pre-installed on Kali used in PM3 |
 
 ---
 
@@ -89,9 +89,9 @@ This progression - *manual → simplified → AI-automated* - mirrors the real-w
 
 ### PM1 - Password Cracking with JTR (John the Ripper + Johnny GUI)
 
-**Target:** `My Locked PDF1.pdf` (266.9 KB), sourced from NetworkWalks' Google Drive lab link
+**Target:** `My Locked PDF1.pdf` (266.9 KB) sourced from NetworkWalks Google Drive Lab link
 **Environment:** Windows 11
-**Method:** Manual hash extraction via third-party web tool, followed by GUI-driven dictionary attack
+**Method:** Manual hash extraction via third-party web tool followed by GUI-driven dictionary attack
 
 **Steps:**
 1. Downloaded JTR jumbo Windows 64-bit binaries + Johnny GUI v2.2
@@ -162,11 +162,11 @@ $pdf$4*4*128*-1060*1*16*55d1a5c14175da449753199e44971d32*32*777fd021a7f3c5ae598c
 
 ---
 
-### PM3 (Optional) - Password Cracking with JTR + AI (HexStrike MCP Edition)
+### PM3 - Password Cracking with JTR + AI (HexStrike MCP Edition)
 
 **Target:** `hash3.networkwalks_flag1.pdf`
 **Environment:** Kali Linux 2026.2 VM
-**Method:** John the Ripper orchestrated entirely through natural-language prompts to Claude Desktop, via the HexStrike AI MCP server - no manual JTR commands typed by the operator
+**Method:** John the Ripper orchestrated entirely through natural-language prompts to Claude Desktop via the HexStrike AI MCP server - no manual JTR commands typed by the operator
 
 #### Part 1 - HexStrike MCP Server Setup
 
@@ -174,7 +174,7 @@ $pdf$4*4*128*-1060*1*16*55d1a5c14175da449753199e44971d32*32*777fd021a7f3c5ae598c
 2. Cloned `0x4m4/hexstrike-ai`, created a Python virtual environment, installed dependencies
 3. Started the HexStrike server (`python3 hexstrike_server.py`) - confirmed listening on `127.0.0.1:8888`
 4. Configured `~/.config/Claude/claude_desktop_config.json` with the `hexstrike-ai` MCP server block, merged alongside existing Claude Desktop preferences
-5. Restarted Claude Desktop - confirmed `hexstrike-ai` showing green **"Running"** status under Local MCP Servers
+5. Restarted Claude Desktop - confirmed `hexstrike-ai` showing blue **"Running"** status under Local MCP Servers
 6. Ran a health-check prompt - confirmed server healthy (v6.0.0, low CPU/memory usage)
 
 **Setup Screenshots:**
@@ -197,7 +197,7 @@ Three natural-language prompts were issued to Claude Desktop, which autonomously
 → AI returned MD5/SHA-1/SHA-256 reference hashes (file-integrity checksums, not yet the crackable hash)
 
 **Prompt 3:** *"Please use JTR tool in this hexstrike MCP server to crack the password of this PDF file. Use the rockyou.txt wordlist dictionary."*
-→ AI autonomously: extracted the real crackable `$pdf$` hash, located the pre-installed `rockyou.txt`, ran `john --wordlist=... `, and reported the cracked password - all without any manually-typed JTR command from the operator
+→ AI autonomously: extracted the real crackable `$pdf$` hash, located the pre-installed `rockyou.txt`, ran `john --wordlist=... ` and reported the cracked password - all without any manually-typed JTR command from the operator
 
 **Extracted Hash:** saved to [`W3-PM3/cracking/outputs/extracted-hash.txt`](W3-PM3/cracking/outputs/extracted-hash.txt)
 
@@ -219,7 +219,7 @@ Three natural-language prompts were issued to Claude Desktop, which autonomously
 
 Transparency notes on real discrepancies encountered between the official lab documentation and the actual environment/execution, documented here rather than hidden:
 
-1. **PM1 vs PM2 file naming collision:** Both official lab docs reference a file literally named `My Locked PDF1.pdf`, but these are two entirely different files distributed through two different channels (Google Drive vs. the official lab webpage), with different sizes (267 KB vs 66 KB) and different `$pdf$` hashes. Both were verified independently and correctly matched to their respective modules - see PM2 section above.
+1. **PM1 vs PM2 file naming collision:** Both official lab docs reference a file literally named `My Locked PDF1.pdf` but these are two entirely different files distributed through two different channels (Google Drive vs. the official lab webpage) with different sizes (267 KB vs 66 KB) and different `$pdf$` hashes. Both were verified independently and correctly matched to their respective modules - see PM2 section above.
 
 2. **PM2's flag string contains `_jtr_`:** Despite PM2 being the NetworkWalks-tools module (not the JTR module), its captured flag reads `nw{networkwalks_flag1_jtr_270521_1}` - this appears to be an internal naming/templating artifact on NetworkWalks' side, not an error in execution.
 
@@ -227,9 +227,7 @@ Transparency notes on real discrepancies encountered between the official lab do
 
 4. **rockyou.txt pre-extracted:** The official PM3 lab documentation describes the AI locating a gzip-compressed `rockyou.txt.gz` and extracting it mid-task. On this Kali 2026.2 installation, `/usr/share/wordlists/rockyou.txt` was already present as a plain, pre-extracted text file - so the AI's cracking run skipped the extraction step entirely. This did not affect the outcome.
 
-5. **HexStrike health-check false negative:** The HexStrike MCP health dashboard initially reported "Password Cracking: 0/5 tools available," suggesting JTR was undetected. Direct testing (Prompt 1) confirmed JTR was in fact fully installed and functional - the health check's `--version`-flag-based detection script simply doesn't account for this JTR jumbo build not supporting a `--version` flag. This was a cosmetic detection bug, not a real capability gap.
-
-6. **Package naming drift:** The official PM3 lab doc's Claude Desktop install commands reference package/file names (`claude-desktop`, `claude-desktop.gpg`) that have since been renamed upstream to `claude-desktop-unofficial` (to allow coexistence with Anthropic's own official Linux package). The current, correct package names were used instead of the doc's outdated ones.
+5. **HexStrike health-check false negative:** The HexStrike MCP health dashboard initially reported "Password Cracking: 0/5 tools available", suggesting JTR was undetected. Direct testing (Prompt 1) confirmed JTR was in fact fully installed and functional - the health check's `--version`-flag-based detection script simply doesn't account for this JTR jumbo build not supporting a `--version` flag. This was a cosmetic detection bug, not a real capability gap.
 
 ---
 
@@ -238,7 +236,7 @@ Transparency notes on real discrepancies encountered between the official lab do
 - Weak, dictionary-guessable passwords (`good-luck`, `password1`) remain trivially crackable in well under a second against standard wordlists like `rockyou.txt` - reinforcing the real-world urgency behind modern password policy enforcement.
 - The same underlying cryptographic weakness can be exploited through wildly different tool sophistication levels - from manual CLI/GUI operation, to zero-install browser tools, to fully autonomous AI-orchestrated attacks - with no meaningful difference in outcome speed or success.
 - AI-orchestrated security tooling (via MCP-style protocols) can reliably drive real, unmodified security tools like John the Ripper through natural language alone, adapting in real time to command syntax quirks (e.g., trying multiple flag variants when `--version` failed).
-- Documentation quality drift is real even in official lab materials - package names, file structures, and tool behaviors can shift over time, making independent verification (as practiced throughout this engagement) an essential skill, not an optional one.
+- Documentation quality drift is real even in official lab materials - package names, file structures and tool behaviors can shift over time, making independent verification (as practiced throughout this engagement) an essential skill, not an optional one.
 
 ---
 
