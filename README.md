@@ -5,6 +5,7 @@
 ![John the Ripper](https://img.shields.io/badge/John_the_Ripper-1.9.0--jumbo--1-red?style=flat-square)
 ![Johnny GUI](https://img.shields.io/badge/Johnny_GUI-v2.2-orange?style=flat-square)
 ![Hash Calculator](https://img.shields.io/badge/NetworkWalks-Hash_Calculator-blue?style=flat-square)
+![Password Cracker](https://img.shields.io/badge/NetworkWalks-Password_Cracker-red?style=flat-square)
 ![Claude Desktop](https://img.shields.io/badge/Claude_Desktop-Linux-CC785C?style=flat-square)
 ![HexStrike AI MCP](https://img.shields.io/badge/HexStrike_AI-MCP_v6.0.0-purple?style=flat-square)
 ![Password Cracking](https://img.shields.io/badge/Technique-Password_Cracking-critical?style=flat-square)
