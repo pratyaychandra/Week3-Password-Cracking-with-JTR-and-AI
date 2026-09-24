@@ -236,7 +236,7 @@ Transparency notes on real discrepancies encountered between the official lab do
 
 - Weak, dictionary-guessable passwords (`good-luck`, `password1`) remain trivially crackable in well under a second against standard wordlists like `rockyou.txt` - reinforcing the real-world urgency behind modern password policy enforcement.
 - The same underlying cryptographic weakness can be exploited through wildly different tool sophistication levels - from manual CLI/GUI operation, to zero-install browser tools, to fully autonomous AI-orchestrated attacks - with no meaningful difference in outcome speed or success.
-- AI-orchestrated security tooling (via MCP-style protocols) can reliably drive real, unmodified security tools like John the Ripper through natural language alone, adapting in real time to command syntax quirks (e.g., trying multiple flag variants when `--version` failed).
+- AI-orchestrated security tooling (via MCP-style protocols) can reliably drive real, unmodified security tools like John the Ripper through natural language alone, adapting in real time to command syntax quirks.
 - Documentation quality drift is real even in official lab materials - package names, file structures and tool behaviors can shift over time, making independent verification (as practiced throughout this engagement) an essential skill, not an optional one.
 
 ---
