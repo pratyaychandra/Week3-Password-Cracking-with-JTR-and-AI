@@ -167,7 +167,7 @@ $pdf$4*4*128*-1060*1*16*55d1a5c14175da449753199e44971d32*32*777fd021a7f3c5ae598c
 
 **Target:** `hash3.networkwalks_flag1.pdf`
 **Environment:** Kali Linux 2026.2 VM
-**Method:** John the Ripper orchestrated entirely through natural-language prompts to Claude Desktop via the HexStrike AI MCP server - no manual JTR commands typed by the operator
+**Method:** John the Ripper orchestrated entirely through natural-language prompts to Claude Desktop via the HexStrike AI MCP server - no manual JTR commands typed by me
 
 #### Part 1 - HexStrike MCP Server Setup
 
