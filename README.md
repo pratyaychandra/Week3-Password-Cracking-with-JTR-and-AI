@@ -42,11 +42,11 @@ This repository is Week 3 of an ongoing Cybersecurity & Ethical Hacking Program 
 
 | Field | Detail |
 |---|---|
-| **Week** | 3 |
+| **Week** | 03 |
 | **Batch** | B083F |
 | **Program** | NetworkWalks Cybersecurity & Ethical Hacking Program |
-| **Task Codes** | W3-PM1, W3-PM2, W3-PM3 (Optional) |
-| **Modules Completed** | 3 / 3 (including optional task) |
+| **Task Codes** | W3-PM1, W3-PM2 & W3-PM3 |
+| **Modules Completed** | 3 / 3 |
 | **Targets** | `My Locked PDF1.pdf` (267 KB - PM1), `My-Locked-PDF1.pdf` (66 KB - PM2), `hash3.networkwalks_flag1.pdf` (PM3) |
 | **Environment** | Windows 11 (PM1, PM2) · Kali Linux 2026.2 VM (PM3) |
 | **Engagement Type** | Encrypted PDF Password Recovery / Dictionary Attack Lab |
